@@ -1,0 +1,123 @@
+import type { Dictionary } from "./en";
+
+export const pt = {
+  NAV: [
+    { id: "humanity", label: "Missão", index: "01" },
+    { id: "journey", label: "Jornada", index: "02" },
+    { id: "starship", label: "Starship", index: "03" },
+    { id: "landing", label: "Pouso", index: "04" },
+    { id: "first-steps", label: "Superfície", index: "05" },
+    { id: "data", label: "Dados", index: "06" },
+    { id: "life", label: "Habitat", index: "07" },
+    { id: "frontier", label: "Fronteira", index: "08" },
+  ],
+  HERO: {
+    tags: ["Missão / 001", "Exploração interplanetária", "A humanidade além da Terra"],
+    intro: "Duzentos e seis dias depois de deixar a Terra, quatro pessoas abriram uma escotilha para outro mundo. Este é o registro dessa travessia.",
+    chip: "Sol 001 — Arcadia Planitia",
+    titleLines: ["Marte.", "Nós chegamos."],
+    subtitle: "A primeira jornada humana ao Planeta Vermelho.",
+    card: { eyebrow: "Estado da missão", status: "Operações na superfície", rows: [["Tripulação", "04"], ["Sol", "001"]], cta: "Explore a missão" },
+    footer: { left: "Conceito / Desde 2026", center: "Role para começar", right: "MSN-001 · 40,1°N 189,6°E" },
+  },
+  HUMANITY: {
+    label: "Um novo capítulo",
+    statement: [
+      { text: "Pela primeira vez,", dim: false, br: true },
+      { text: "a humanidade chamou", dim: true, br: true },
+      { text: "outro planeta", dim: true, br: false },
+      { text: "de lar.", dim: true, br: false },
+    ],
+    body: "A Missão 001 levou quatro tripulantes por 480 milhões de quilômetros de espaço para construir a primeira base além da Terra. Mais que uma bandeira ou uma pegada: um começo.",
+    aside: "Desempenho sob pressão, da plataforma de lançamento à superfície. Para uma espécie que segue em frente.",
+    meta: [["Travessia", "206 dias"], ["Tripulação", "04"], ["Mundos", "02"]],
+  },
+  JOURNEY: {
+    label: "A jornada",
+    title: ["Da Terra", "a Marte."],
+    intro: "Uma queima contínua jamais bastaria. A travessia é uma coreografia de órbitas: esperar a janela certa e deixar a gravidade conduzir a nave pela maior parte do caminho.",
+    phases: [
+      { index: "01", name: "Lançamento", time: "T+00:00:00", text: "Trinta e três motores erguem o conjunto da plataforma. O propulsor retorna; a nave segue subindo." },
+      { index: "02", name: "Partida da Terra", time: "T+04 dias", text: "Reabastecida em órbita, a nave aciona os motores de vácuo e deixa o campo gravitacional da Terra." },
+      { index: "03", name: "Travessia interplanetária", time: "T+05 → 198 dias", text: "Seis meses e meio de voo por inércia. Correções de rota medidas em centímetros por segundo." },
+      { index: "04", name: "Órbita de Marte", time: "T+201 dias", text: "A frenagem na atmosfera rarefeita reduz a velocidade em quilômetros por segundo." },
+      { index: "05", name: "Pouso na superfície", time: "T+206 dias", text: "Descida horizontal, giro e queima de pouso. Seis minutos entre a entrada atmosférica e a nave em solo marciano." },
+    ],
+    telemetry: { distanceKm: 480000000, days: 206, velocityRange: [7.8, 30.4] },
+  },
+  STARSHIP: {
+    label: "O veículo",
+    title: ["Projetada", "para o", "impossível."],
+    intro: "Totalmente reutilizável, em aço inoxidável, movida a metano e oxigênio líquidos: propelentes que um dia poderão ser produzidos no próprio Marte.",
+    specs: [
+      { label: "Altura total", value: 121, suffix: "m", prefix: "≈", source: "public" },
+      { label: "Diâmetro", value: 9, suffix: "m", prefix: "", source: "public" },
+      { label: "Motores Raptor", value: 39, suffix: "", prefix: "", note: "33 no propulsor · 6 na nave", source: "public" },
+      { label: "Carga até a órbita", value: 100, suffix: "t+", prefix: "", note: "configuração reutilizável", source: "public" },
+      { label: "Tripulantes da missão", value: 4, suffix: "", prefix: "", source: "concept" },
+    ],
+    caption: "Conjunto de motores Raptor da nave. Representação conceitual.",
+    sourceNote: "Dimensões e desempenho aproximados, com base em especificações divulgadas publicamente. Os dados da missão são fictícios.",
+  },
+  LANDING: {
+    label: "O primeiro pouso",
+    title: ["Pousamos.", "Um novo mundo", "começa."],
+    site: "Arcadia Planitia", coords: "40,1°N · 189,6°E", time: "Sol 001 · 14:06:22 LMST",
+    captions: [["Descida", "6 min 12 s"], ["Velocidade no pouso", "0,0 m/s"], ["Poeira assentada", "+ 41 s"]],
+    caption: "A nave em solo marciano, instantes após o desligamento dos motores. Representação conceitual dramatizada.",
+  },
+  FIRST_STEPS: {
+    label: "Primeiros passos",
+    title: ["Um pequeno", "passo além", "do nosso mundo."],
+    quote: "Base Arcadia, superfície. Pés no chão. É mais silencioso do que imaginei.",
+    quoteAttribution: "Transcrição da atividade extraveicular · dramatização fictícia",
+    body: "Duas horas e quarenta e um minutos lá fora. Uma caminhada de trezentos metros. As primeiras pegadas humanas em um planeta que esperou quatro bilhões e meio de anos por elas.",
+    data: [["Duração da atividade", "02:41:09"], ["Distância percorrida", "312 m"], ["Temp. da superfície", "−63 °C"]],
+  },
+  MISSION_DATA: {
+    label: "A missão em números", panelTitle: "Dados conceituais da missão", archive: "MSN-001 / Arquivo de telemetria",
+    metrics: [
+      { label: "Duração da missão", value: 912, suffix: "dias", note: "Terra → Marte → Terra" },
+      { label: "Distância percorrida", value: 480, suffix: "M km", note: "Trajetória de ida" },
+      { label: "Tripulantes", value: 4, suffix: "", note: "Comandante, piloto e 2 especialistas" },
+      { label: "Operações na superfície", value: 500, suffix: "sóis", note: "Permanência planejada" },
+      { label: "Atraso de comunicação", value: 22, prefix: "3–", suffix: "min", note: "Em um sentido, conforme a distância" },
+    ],
+    status: "Normal",
+    systems: [{ label: "Energia", value: 78 }, { label: "Oxigênio", value: 92 }, { label: "Água", value: 64 }, { label: "Propelente (ISRU)", value: 31 }],
+    environment: [["Temp.", "−63 °C"], ["Vento", "7,6 m/s"], ["Pressão", "0,63 kPa"], ["Radiação", "Baixa"]],
+    map: { name: "Arcadia Planitia", coords: "40,1°N 189,6°E", scale: "10 km" },
+  },
+  LIFE: {
+    label: "Vida em outro planeta",
+    title: ["Vida em", "outro planeta."],
+    intro: "A nave foi o primeiro abrigo. Em um ano, uma base cresceu ao redor dela: módulos pressurizados, uma usina de propelentes e estufas sob um céu de plástico fino.",
+    pull: ["Não viemos de passagem.", "Viemos para ficar —", "e aprender a viver aqui."],
+    blocks: [
+      { fig: "Fig. 08.1", title: "Módulo habitacional A", text: "Alojamento protegido por regolito para quatro pessoas, expansível para doze." },
+      { fig: "Fig. 08.2", title: "Equipes de montagem", text: "Em Marte, cada estrutura nasce pelas mãos de alguém. As máquinas vêm depois." },
+      { fig: "Fig. 08.3", title: "Ciência antes da ocupação", text: "Uma perfuração profunda lê a história do planeta e procura gelo que pode virar água, ar e combustível." },
+      { fig: "Fig. 08.4", title: "Alcance", text: "Veículos pressurizados ampliam o alcance da base para duzentos quilômetros." },
+    ],
+  },
+  FINAL: {
+    label: "A próxima fronteira",
+    title: ["Este nunca foi", "o destino final."],
+    body: "Marte é uma porta. Cada nave que chega torna a próxima mais acessível, mais rápida e mais ousada.",
+    next: "Próxima partida: janela de 2033 · Conceito", cta: "Reviva a jornada",
+  },
+  metadata: {
+    title: "SpaceX — Mars Mission",
+    description: "Uma experiência cinematográfica conceitual sobre a primeira missão tripulada da Starship a Marte. Projeto fictício e não oficial, sem vínculo ou endosso da SpaceX.",
+  },
+  UI: {
+    skip: "Ir para o conteúdo", primaryNavigation: "Navegação principal", backToTop: "Voltar ao início", openMenu: "Abrir menu", closeMenu: "Fechar menu", language: "Idioma", english: "English", portuguese: "Português brasileiro", missionLog: "Diário da missão", missionStatus: "Estado da missão", nominal: "Normal", telemetry: "Telemetria", simulated: "Simulada", distanceFromEarth: "Distância da Terra", relativeVelocity: "Velocidade relativa", missionElapsed: "Tempo de missão", days: "dias", earth: "Terra", mars: "Marte", departure: "Partida", arrival: "Chegada", publicApprox: "Público · aprox.", concept: "Conceito", site: "Local", coordinates: "Coord.", surfaceSystems: "Sistemas da superfície", baseSystems: "Sistemas da base", comms: "Comunicação espacial · Terra ↔ Marte", lightTime: "Tempo de sinal em um sentido: 3–22 min", simulatedValues: "Todos os valores são simulados para uma missão fictícia. Não representam telemetria real.", portraitNote: "Valores simulados · missão fictícia", firstPrint: "Primeira pegada", swipe: "Deslize →", panorama: "Arcadia, vista para o norte", imagePending: "Imagem pendente", logoPending: "SpaceX (arquivo da logo pendente)", asset: "Imagem",
+  },
+  PRELOADER: { loading: "Carregando a experiência da missão", initializing: "Iniciando missão", mission: "Marte" },
+  FOOTER: {
+    about: "Mars Mission 001 é uma experiência conceitual que imagina a primeira jornada tripulada da humanidade a Marte.", navigation: "Navegação do rodapé", index: "Índice", project: "Projeto", role: "Conceito, design e desenvolvimento", name: "Seu nome", year: "Ano", marquee: "MISSÃO MARTE", disclaimer: "PROJETO CONCEITUAL NÃO OFICIAL — SEM VÍNCULO OU ENDOSSO DA SPACEX. A MISSÃO A MARTE RETRATADA É FICTÍCIA.", copyright: "Projeto conceitual · As marcas pertencem aos respectivos titulares",
+  },
+  ASSET_ALT: {
+    BRAND_LOGO: "SpaceX", HERO_LANDSCAPE: "Planície rochosa de Marte sob um céu cinzento e nebuloso", HERO_STARSHIP: "Starship suspensa sobre a superfície de Marte durante a descida final", HERO_FOREGROUND: "", JOURNEY_DEEP_SPACE: "", JOURNEY_EARTH: "A Terra vista do espaço profundo", JOURNEY_MARS: "Marte visto do espaço", JOURNEY_STARSHIP_TRANSIT: "Starship em voo interplanetário", STARSHIP_PROFILE: "Vista completa da Starship iluminada lateralmente contra um céu negro", STARSHIP_ENGINES: "Detalhe do conjunto de motores Raptor na base da Starship", LANDING_TOUCHDOWN: "Starship em solo marciano logo após o pouso, com a poeira ainda assentando", FIRSTSTEPS_ASTRONAUT: "Astronauta de costas caminhando pela planície marciana", FIRSTSTEPS_FOOTPRINT: "Pegada de uma bota no regolito fino de Marte", DATA_SURFACE_MAP: "Vista orbital vertical da região de pouso", LIFE_HABITAT: "Módulos habitacionais pressurizados na superfície de Marte ao entardecer", LIFE_CREW_WORK: "Dois astronautas montando equipamentos ao lado da nave", LIFE_SCIENCE: "Estação científica de perfuração profunda e mastro de sensores", LIFE_ROVER: "Veículo pressurizado de exploração atravessando uma crista rochosa", LIFE_PANORAMA: "Vista panorâmica de um vale marciano", FINAL_HORIZON: "Horizonte de Marte visto da órbita, com uma nave partindo para o espaço profundo",
+  },
+} satisfies Dictionary;

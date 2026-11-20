@@ -1,310 +1,210 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type MouseEvent } from "react";
-import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
-import { EASE, prefersReducedMotion } from "@/lib/motion";
-import { lockScroll, scrollToSection, unlockScroll } from "@/lib/scroll";
-import { NAV_LINKS, SECTIONS } from "@/content/site";
-import { useLanguage } from "@/hooks/useLanguage";
-import { useExperience } from "@/hooks/useExperience";
-import { SpaceXLogo } from "@/components/ui/SpaceXLogo";
-import { LanguageSwitch } from "@/components/ui/LanguageSwitch";
+import { useEffect, useRef, useState } from "react";
+import { gsap, useGSAP, ScrollTrigger, EASE, MEDIA, smoothScrollTo } from "@/lib/gsap";
+import { onIntroRelease } from "@/lib/intro";
+import { NAV, NAV_PRIMARY } from "@/data/content";
+import { SITE } from "@/data/site";
+import { Logo } from "@/components/ui/Logo";
+import { ScrollButton } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 
-const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+function go(e: React.MouseEvent<HTMLAnchorElement>, target: string, after?: () => void) {
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+  e.preventDefault();
+  after?.();
+  smoothScrollTo(target === "top" ? 0 : target);
+  history.replaceState(null, "", target === "top" ? location.pathname + location.search : target);
+}
 
 export function Navbar() {
-  const { t } = useLanguage();
-  const { revealed } = useExperience();
-  const headerRef = useRef<HTMLElement>(null);
-  const barRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const toggleRef = useRef<HTMLButtonElement>(null);
-  const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
-  const openRef = useRef(false);
+  const openRef = useRef(open);
+  useEffect(() => {
+    openRef.current = open;
+  }, [open]);
 
-  // ── Scroll-linked chrome: progress bar, chapter tracking, hide on scroll ──
   useGSAP(
     () => {
-      const header = headerRef.current;
-      const bar = barRef.current;
-      if (!header || !bar) return;
+      const nav = navRef.current!;
 
-      const setBar = gsap.quickSetter(bar, "scaleX");
+      // Entrance in sync with the hero reveal.
+      const mm = gsap.matchMedia();
+      mm.add(MEDIA.motion, () => {
+        const items = gsap.utils.toArray<HTMLElement>("[data-nav-item]", nav);
+        gsap.set(items, { autoAlpha: 0, y: -10 });
+        return onIntroRelease(() => {
+          gsap.to(items, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 1,
+            ease: EASE.out,
+            stagger: 0.05,
+            delay: 0.55,
+          });
+        });
+      });
+
+      // Background after the first scroll, hide on scroll-down, show on scroll-up.
       ScrollTrigger.create({
         start: 0,
         end: "max",
-        refreshPriority: -10,
         onUpdate: (self) => {
-          setBar(self.progress);
           const y = self.scroll();
-          header.dataset.solid = String(y > 24);
-          const hide = self.direction === 1 && y > window.innerHeight * 0.75 && !openRef.current;
-          header.dataset.hidden = String(hide);
+          nav.dataset.scrolled = String(y > 40);
+          const hide = self.direction === 1 && y > window.innerHeight * 0.8 && !openRef.current;
+          nav.dataset.hidden = String(hide);
         },
       });
 
-      SECTIONS.forEach(({ id, chapter }) => {
-        const el = document.getElementById(id);
-        if (!el) return;
+      // Active section indicator.
+      NAV.forEach(({ id }) => {
+        const section = document.getElementById(id);
+        if (!section) return;
         ScrollTrigger.create({
-          trigger: el,
+          trigger: section,
           start: "top 55%",
           end: "bottom 55%",
-          refreshPriority: -10,
-          onToggle: (self) => {
-            if (self.isActive) setActive(chapter);
+          onToggle: ({ isActive }) => {
+            nav.querySelectorAll(`[data-nav-link="${id}"]`).forEach((a) => {
+              if (isActive) a.setAttribute("aria-current", "true");
+              else a.removeAttribute("aria-current");
+            });
           },
         });
       });
     },
-    { scope: headerRef },
+    { scope: navRef },
   );
 
-  // Entrance once the preloader opens
-  useGSAP(
-    () => {
-      if (!revealed || prefersReducedMotion()) return;
-      gsap.from("[data-nav-item]", {
-        y: -14,
-        autoAlpha: 0,
-        duration: 1.1,
-        ease: EASE.out,
-        stagger: 0.07,
-        delay: 0.55,
-      });
-    },
-    { scope: headerRef, dependencies: [revealed] },
-  );
-
-  // ── Mobile menu ───────────────────────────────────────────────────────
-  const closeMenu = useCallback((restoreFocus = true) => {
-    setOpen(false);
-    if (restoreFocus) toggleRef.current?.focus();
-  }, []);
-
+  // Mobile menu: scroll lock, Escape, focus management.
   useEffect(() => {
-    openRef.current = open;
-    const menu = menuRef.current;
-    const main = document.getElementById("main");
-    const footer = document.getElementById("site-footer");
-    if (!menu) return;
-
-    const reduced = prefersReducedMotion();
-    const links = menu.querySelectorAll("[data-menu-item]");
-    let tween: gsap.core.Timeline | null = null;
-
-    if (open) {
-      lockScroll();
-      if (main) main.inert = true;
-      if (footer) footer.inert = true;
-      menu.hidden = false;
-      tween = gsap
-        .timeline()
-        .fromTo(
-          menu,
-          { clipPath: "inset(0% 0% 100% 0%)" },
-          { clipPath: "inset(0% 0% 0% 0%)", duration: reduced ? 0 : 0.85, ease: EASE.inOut },
-        )
-        .fromTo(
-          links,
-          // opacity (not autoAlpha) keeps the links focusable while they animate in
-          { yPercent: reduced ? 0 : 110, opacity: reduced ? 1 : 0 },
-          { yPercent: 0, opacity: 1, duration: reduced ? 0 : 0.9, ease: EASE.out, stagger: 0.06 },
-          reduced ? 0 : 0.35,
-        );
-      const first = menu.querySelector<HTMLElement>(FOCUSABLE);
-      first?.focus({ preventScroll: true });
-    } else if (!menu.hidden) {
-      tween = gsap.timeline({
-        onComplete: () => {
-          menu.hidden = true;
-        },
-      });
-      tween.to(menu, { clipPath: "inset(0% 0% 100% 0%)", duration: reduced ? 0 : 0.7, ease: EASE.inOut });
-    }
-
+    const html = document.documentElement;
+    if (!open) return;
+    html.classList.add("is-locked");
+    menuRef.current?.querySelector<HTMLElement>("a")?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    const btn = menuBtnRef.current;
     return () => {
-      tween?.kill();
-      if (open) {
-        unlockScroll();
-        if (main) main.inert = false;
-        if (footer) footer.inert = false;
-      }
+      html.classList.remove("is-locked");
+      window.removeEventListener("keydown", onKey);
+      btn?.focus();
     };
   }, [open]);
 
-  // Close the menu when the viewport grows to desktop
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 1024px)");
-    const onChange = () => mq.matches && setOpen(false);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-
-  const onMenuKeyDown = (event: KeyboardEvent<HTMLElement>) => {
-    if (!open) return;
-    if (event.key === "Escape") {
-      event.preventDefault();
-      closeMenu();
-      return;
-    }
-    if (event.key !== "Tab" || !menuRef.current || !toggleRef.current) return;
-    const items = [toggleRef.current, ...Array.from(menuRef.current.querySelectorAll<HTMLElement>(FOCUSABLE))];
-    const first = items[0];
-    const last = items[items.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  };
-
-  const go = (id: string) => (event: MouseEvent<HTMLAnchorElement>) => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
-    event.preventDefault();
-    if (open) {
-      closeMenu(false);
-      // wait for the scroll lock to release before moving
-      window.setTimeout(() => scrollToSection(id), 60);
-    } else {
-      scrollToSection(id);
-    }
-  };
-
-  const chapterName = t.nav.chapters[active];
-
   return (
-    <header
-      ref={headerRef}
-      className="site-header fixed inset-x-0 top-0 z-50"
-      data-solid="false"
-      data-hidden="false"
-      data-open={open}
-      onKeyDown={onMenuKeyDown}
-    >
-      {/* experience progress */}
-      <div className="absolute inset-x-0 top-0 h-px bg-line" aria-hidden="true">
-        <div ref={barRef} className="h-full origin-left bg-mars" style={{ transform: "scaleX(0)" }} />
-      </div>
-
-      <div className="site-header__bar shell relative z-10 flex h-[var(--nav-h)] items-center justify-between gap-6">
+    <>
+    <header ref={navRef} className="nav" data-scrolled="false" data-hidden="false">
+      <nav aria-label="Primary" className="shell flex h-full items-center justify-between gap-6">
         <a
           href="#top"
-          onClick={go("top")}
-          aria-label={t.nav.home}
-          className="relative -my-2 flex items-center py-2 text-bone"
+          className="flex h-[0.95rem] items-center md:h-[1.05rem]"
+          aria-label="Back to top"
           data-nav-item
+          onClick={(e) => go(e, "top")}
         >
-          <SpaceXLogo title={null} className="h-auto w-[clamp(104px,9vw,132px)]" />
+          <Logo />
         </a>
 
-        {/* chapter indicator */}
-        <div
-          className="t-mono pointer-events-none absolute left-1/2 hidden -translate-x-1/2 items-center gap-3 text-steel xl:flex"
-          data-nav-item
-          aria-hidden="true"
-        >
-          <span className="tabular-nums text-mars">{String(active + 1).padStart(2, "0")}</span>
-          <span className="h-px w-6 bg-line-strong" />
-          <span className="relative block h-[1.5em] min-w-[10rem] overflow-hidden">
-            <span key={chapterName} className="chapter-swap absolute inset-0 text-bone">
-              {chapterName}
-            </span>
+        <ul className="hidden items-center gap-1 lg:flex" data-nav-item>
+          {NAV_PRIMARY.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                data-nav-link={item.id}
+                className="group flex items-baseline gap-1.5 px-3 py-2 text-[0.8125rem] text-mute transition-colors duration-300 hover:text-ink aria-[current=true]:text-ink"
+                onClick={(e) => go(e, `#${item.id}`)}
+              >
+                <span className="font-mono text-[0.5625rem] tracking-[0.1em] text-dim transition-colors group-hover:text-mute">
+                  {item.index}
+                </span>
+                <span className="link-line" data-nav-link={item.id}>
+                  {item.label}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-3" data-nav-item>
+          <span className="hidden items-center gap-2 t-label text-dim xl:flex">
+            <span className="dot dot--live bg-haze" aria-hidden />
+            Live archive
           </span>
-          <span className="tabular-nums">/ {String(SECTIONS.length).padStart(2, "0")}</span>
-        </div>
-
-        <nav aria-label={t.nav.primary} className="hidden items-center lg:flex" data-nav-item>
-          <ul className="flex items-center gap-[clamp(1.25rem,2.4vw,2.5rem)]">
-            {NAV_LINKS.map((link) => (
-              <li key={link.id}>
-                <a href={`#${link.id}`} onClick={go(link.id)} className="nav-link t-mono">
-                  {t.nav.links[link.key]}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <span className="mx-6 h-3 w-px bg-line-strong" aria-hidden="true" />
-          <LanguageSwitch />
-        </nav>
-
-        <div className="flex items-center gap-1 lg:hidden" data-nav-item>
-          <LanguageSwitch className="max-[359px]:hidden" />
+          <ScrollButton to="#data" className="hidden sm:inline-flex">
+            Mission log
+          </ScrollButton>
           <button
-            ref={toggleRef}
+            ref={menuBtnRef}
             type="button"
-            className="t-mono -mr-3 flex h-11 items-center gap-3 px-3 text-bone"
+            className="relative z-[60] grid h-11 w-11 place-items-center border border-line-strong text-ink transition-colors hover:border-ink lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
-            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+            aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
           >
-            <span aria-hidden="true">{open ? t.nav.close : t.nav.menu}</span>
-            <span className="menu-icon" aria-hidden="true">
-              <span />
-              <span />
+            <span className="relative block h-2.5 w-4" aria-hidden>
+              <span
+                className={cn(
+                  "absolute left-0 top-0 h-px w-full bg-current transition-transform duration-500 ease-[var(--ease-out-expo)]",
+                  open && "translate-y-[5px] rotate-45",
+                )}
+              />
+              <span
+                className={cn(
+                  "absolute bottom-0 left-0 h-px w-full bg-current transition-transform duration-500 ease-[var(--ease-out-expo)]",
+                  open && "-translate-y-[4px] -rotate-45",
+                )}
+              />
             </span>
           </button>
         </div>
-      </div>
+      </nav>
+    </header>
 
-      {/* mobile menu */}
+      {/* Mobile / tablet menu — outside the header so its fixed positioning
+          is not trapped by the header's backdrop-filter. */}
       <div
         ref={menuRef}
         id="mobile-menu"
-        role="dialog"
-        aria-modal="true"
-        aria-label={t.nav.menu}
-        hidden
-        className="fx-columns fixed inset-0 z-0 flex flex-col bg-void pt-[calc(var(--nav-h)+2rem)] lg:hidden"
-        style={{ clipPath: "inset(0% 0% 100% 0%)" }}
+        className={cn(
+          "fixed inset-0 z-40 flex flex-col bg-void pt-[calc(var(--nav-h)+2rem)] transition-[clip-path] duration-700 ease-[var(--ease-in-out-expo)] lg:hidden",
+          open ? "[clip-path:inset(0_0_0_0)]" : "pointer-events-none invisible [clip-path:inset(0_0_100%_0)]",
+        )}
+        aria-hidden={!open}
+        inert={!open}
       >
-        <nav aria-label={t.nav.primary} className="shell flex-1">
-          <ol className="border-t border-line">
-            {NAV_LINKS.map((link, i) => (
-              <li key={link.id} className="overflow-hidden border-b border-line">
-                <a
-                  href={`#${link.id}`}
-                  onClick={go(link.id)}
-                  data-menu-item
-                  className="group flex items-baseline justify-between py-5"
-                >
-                  <span className="t-display text-[clamp(2rem,9vw,3.5rem)] transition-colors duration-300 group-hover:text-mars group-focus-visible:text-mars">
-                    {t.nav.links[link.key]}
-                  </span>
-                  <span className="t-mono text-steel">{String(i + 1).padStart(2, "0")}</span>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
-        <div className="shell flex items-end justify-between gap-6 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
-          <p className="t-mono max-w-[16rem] text-steel" data-menu-item>
-            {t.nav.menuNote}
-          </p>
-          <span className="t-mono text-steel" data-menu-item aria-hidden="true">
-            {String(active + 1).padStart(2, "0")} / {String(SECTIONS.length).padStart(2, "0")}
-          </span>
-        </div>
+        <ul className="shell flex flex-col">
+          {NAV.map((item, i) => (
+            <li key={item.id} className="border-b border-line first:border-t">
+              <a
+                href={`#${item.id}`}
+                data-nav-link={item.id}
+                className="flex items-baseline gap-4 py-4 text-ink"
+                onClick={(e) => go(e, `#${item.id}`, () => setOpen(false))}
+                style={{
+                  transition: "opacity .6s var(--ease-out-expo), transform .8s var(--ease-out-expo)",
+                  transitionDelay: open ? `${0.15 + i * 0.04}s` : "0s",
+                  opacity: open ? 1 : 0,
+                  transform: open ? "none" : "translateY(16px)",
+                }}
+              >
+                <span className="t-label text-dim">{item.index}</span>
+                <span className="font-display text-[clamp(1.1rem,5vw,2rem)] uppercase tracking-[-0.02em]">
+                  {item.label}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p className="shell mt-auto pb-8 t-label text-dim">{SITE.disclaimer}</p>
       </div>
-    </header>
-  );
-}
-
-export function SkipLink() {
-  const { t } = useLanguage();
-  return (
-    <a
-      href="#main"
-      className={cn(
-        "sr-only-focusable t-mono fixed left-4 top-4 z-[200] bg-bone px-4 py-3 text-void",
-      )}
-    >
-      {t.common.skip}
-    </a>
+    </>
   );
 }

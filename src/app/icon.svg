@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#050608"/>
-  <circle cx="36" cy="38" r="13" fill="#C96638"/>
-  <path d="M8 52C20 40 34 26 58 12" fill="none" stroke="#F5F5F2" stroke-width="3.5" stroke-linecap="square"/>
-  <circle cx="58" cy="12" r="2.5" fill="#F5F5F2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="221 -36.5875 114 114">
+  <!-- Original X paths extracted unchanged from public/branding/spacex-logo.svg. -->
+  <style>path{fill:#f4f5f6}@media(prefers-color-scheme:light){path{fill:#005288}}</style>
+  <path d="M236.725,14.988h-11.551l-0.627,1.193l12.828,9.351c2.43-1.407,5.074-2.833,7.95-4.24"/>
+  <path d="M247.075,32.603l11.275,8.222h11.692l0.484-1.089L253.69,27.413   C251.454,29.054,249.245,30.787,247.075,32.603"/>
+  <path d="M235.006,40.806h-10.451l-0.883-1.383C230.778,32.562,262.56,3.151,331.644,0   C331.644,0,273.658,1.956,235.006,40.806"/>
 </svg>

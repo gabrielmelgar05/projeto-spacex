@@ -1,27 +1,29 @@
 import { cn } from "@/lib/cn";
 
-interface MaskLinesProps {
+type MaskLinesProps = {
   lines: readonly string[];
-  /** Optional class per line index (e.g. indentation for asymmetric headlines). */
-  lineClass?: (index: number) => string | undefined;
-}
+  as?: "h1" | "h2" | "h3" | "p" | "div";
+  className?: string;
+  lineClassName?: string;
+  id?: string;
+};
 
 /**
- * Renders a headline as masked lines for clip/translate reveals.
- * Screen readers get the sentence once; the visual lines are aria-hidden.
- * Targets for GSAP: `[data-line]` (the moving inner span).
+ * Title with intentional line breaks. Each line sits in an overflow mask so it
+ * can slide in from below (`[data-line]`). Screen readers get the full sentence
+ * once, from a visually-hidden copy.
  */
-export function MaskLines({ lines, lineClass }: MaskLinesProps) {
+export function MaskLines({ lines, as: Tag = "h2", className, lineClassName, id }: MaskLinesProps) {
   return (
-    <>
+    <Tag className={className} id={id}>
       <span className="sr-only">{lines.join(" ")}</span>
-      <span aria-hidden="true" className="block">
-        {lines.map((line, i) => (
-          <span key={i} className={cn("mask-line", lineClass?.(i))}>
-            <span data-line>{line}</span>
+      {lines.map((line, i) => (
+        <span key={i} className="line-mask" aria-hidden>
+          <span className={cn("line-inner", lineClassName)} data-line>
+            {line}
           </span>
-        ))}
-      </span>
-    </>
+        </span>
+      ))}
+    </Tag>
   );
 }

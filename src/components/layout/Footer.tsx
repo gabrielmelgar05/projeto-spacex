@@ -1,64 +1,103 @@
 "use client";
 
-import type { MouseEvent } from "react";
-import { NAV_LINKS } from "@/content/site";
-import { useLanguage } from "@/hooks/useLanguage";
-import { scrollToSection } from "@/lib/scroll";
-import { SpaceXLogo } from "@/components/ui/SpaceXLogo";
-import { Arrow } from "@/components/ui/Cta";
+import { useRef } from "react";
+import { gsap, useGSAP, EASE, MEDIA, smoothScrollTo } from "@/lib/gsap";
+import { NAV } from "@/data/content";
+import { SITE } from "@/data/site";
+import { Logo } from "@/components/ui/Logo";
+import { ScrollButton } from "@/components/ui/Button";
 
+/** SECTION 10 — Footer. */
 export function Footer() {
-  const { t } = useLanguage();
-  const year = 2026;
+  const root = useRef<HTMLElement>(null);
 
-  const go = (id: string) => (event: MouseEvent<HTMLAnchorElement>) => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
-    event.preventDefault();
-    scrollToSection(id);
-  };
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add(MEDIA.motion, () => {
+        gsap.from("[data-mark] span", {
+          yPercent: 100,
+          duration: 1.6,
+          ease: EASE.expo,
+          stagger: 0.06,
+          scrollTrigger: { trigger: "[data-mark]", start: "top 95%", once: true },
+        });
+      });
+    },
+    { scope: root },
+  );
 
   return (
-    <footer id="site-footer" className="relative border-t border-line bg-void pb-[max(2rem,env(safe-area-inset-bottom))] pt-[clamp(4rem,10vh,7rem)]">
-      <div className="shell">
-        <div className="grid-12 gap-y-12">
-          <div className="col-span-12 lg:col-span-6">
-            <SpaceXLogo title="SpaceX" className="h-auto w-[clamp(180px,24vw,320px)] text-bone" />
-            <p className="t-mono mt-8 max-w-[22rem] text-steel">{t.footer.signal}</p>
+    <footer ref={root} className="relative overflow-hidden border-t border-line bg-void pt-[clamp(4rem,8vw,7rem)]">
+      <div className="shell grid-12 gap-y-12">
+        <div className="col-span-4 md:col-span-5">
+          <div className="h-[1.1rem]">
+            <Logo />
           </div>
+          <p className="mt-6 max-w-[40ch] text-[0.875rem] text-mute">
+            Mars Mission 001 is a speculative web experience imagining humanity’s first crewed journey to Mars.
+          </p>
+        </div>
 
-          <nav aria-label={t.footer.navLabel} className="col-span-12 sm:col-span-6 lg:col-span-3 lg:col-start-8">
-            <ul className="t-mono">
-              {NAV_LINKS.map((link, i) => (
-                <li key={link.id} className="border-t border-line">
-                  <a href={`#${link.id}`} onClick={go(link.id)} className="footer-link">
-                    <span className="text-steel">0{i + 1}</span>
-                    <span>{t.nav.links[link.key]}</span>
-                  </a>
-                </li>
-              ))}
-              <li className="border-y border-line">
-                <a href="#top" onClick={go("top")} className="footer-link">
-                  <Arrow direction="up" className="text-mars" />
-                  <span>{t.footer.top}</span>
+        <nav aria-label="Footer" className="col-span-2 md:col-span-3 md:col-start-7">
+          <p className="t-label text-dim">Index</p>
+          <ul className="mt-4 grid gap-2 text-[0.875rem]">
+            {NAV.map((n) => (
+              <li key={n.id}>
+                <a
+                  href={`#${n.id}`}
+                  className="link-line text-mute transition-colors hover:text-ink"
+                  onClick={(e) => {
+                    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+                    e.preventDefault();
+                    smoothScrollTo(`#${n.id}`);
+                  }}
+                >
+                  {n.label}
                 </a>
               </li>
-            </ul>
-          </nav>
+            ))}
+          </ul>
+        </nav>
 
-          <div className="col-span-12 sm:col-span-6 lg:col-span-2 lg:col-start-11">
-            <p className="t-mono text-bone">{t.footer.credit}</p>
-          </div>
+        <div className="col-span-2 flex flex-col md:col-span-3 md:col-start-10">
+          <p className="t-label text-dim">Project</p>
+          <dl className="mt-4 grid gap-3 text-[0.875rem]">
+            <div>
+              <dt className="text-dim">{SITE.credits.role}</dt>
+              <dd>
+                <a href={SITE.credits.url} className="link-line text-ink">
+                  {SITE.credits.name}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="text-dim">Year</dt>
+              <dd className="text-ink">{SITE.year}</dd>
+            </div>
+          </dl>
+          <ScrollButton to="top" dir="up" className="mt-8 w-fit">
+            Back to top
+          </ScrollButton>
         </div>
+      </div>
 
-        <div className="mt-[clamp(4rem,10vh,7rem)] border-t border-line pt-6">
-          <div className="grid-12 gap-y-4">
-            <p className="t-mono col-span-12 text-bone md:col-span-6" lang="en">
-              {t.footer.disclaimer}
-            </p>
-            <p className="col-span-12 text-[0.8rem] leading-relaxed text-steel md:col-span-6">{t.footer.disclaimerLong}</p>
-          </div>
-          <p className="t-mono mt-8 text-steel">© {year} Aklio Studio — Concept work</p>
-        </div>
+      {/* Monumental closing mark */}
+      <div className="shell mt-[clamp(4rem,9vw,8rem)]" aria-hidden>
+        <p data-mark className="flex justify-between overflow-hidden font-display text-[clamp(3rem,15.5vw,19rem)] leading-[0.85] tracking-[-0.06em] text-raise">
+          {"MARS/001".split("").map((c, i) => (
+            <span key={i} className="inline-block">
+              {c}
+            </span>
+          ))}
+        </p>
+      </div>
+
+      <div className="shell mt-6 flex flex-col gap-3 border-t border-line py-6 t-label text-[0.625rem] md:flex-row md:items-center md:justify-between">
+        <p className="text-mute">{SITE.disclaimer}</p>
+        <p className="text-dim">
+          © {SITE.year} · Concept project · Trademarks belong to their owners
+        </p>
       </div>
     </footer>
   );

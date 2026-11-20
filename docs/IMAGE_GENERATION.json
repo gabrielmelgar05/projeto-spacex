@@ -1,0 +1,197 @@
+{
+  "generatedOn": "2026-11-19",
+  "generator": "ChatGPT built-in image_gen",
+  "delivery": "WebP quality 88; alpha quality 100; original generated resolution, no upscaling; lossless alpha cutouts.",
+  "assets": [
+    {
+      "id": "HERO_LANDSCAPE",
+      "path": "public/images/hero/hero-mars-landscape.webp",
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "bytes": 185156,
+      "sha256": "67bc78a8cdb9f1be22b9620c4413c368689e2973b6defbde4d38bb0c237f62a2",
+      "prompt": "Use case: photorealistic-natural\nAsset type: website hero background, landscape 16:9, generate 3200 x 1800 pixels if possible.\nPrimary request: Cinematic wide landscape photograph of the surface of Mars for an unofficial SpaceX Mars mission concept website. An immense rocky plain stretches to distant low eroded mesas and soft hills; horizon at 62 percent of frame height. Scattered dark basaltic boulders in the middle ground, fine dusty regolith, thin haze in the distance. Empty central landing area, no spacecraft or people.\nLighting: low sun from the LEFT behind thin haze, soft diffused light, long shadows, subtle rim light on rocks. Pale grey-ochre sky, upper 20 percent calm and empty. Lower third darker in shadow.\nPalette: restrained desaturated rust, ochre graded toward neutral warm grey, deep near-black cool shadows matching #050608; realistic detail still visible, no neon.\nStyle: full-frame cinema documentary photograph, human eye level, 35mm lens, detailed natural geology, fine film grain, immense quiet scale.\nConstraints: one seamless full-bleed image, no text, no logo, no watermark, no HUD, no border, no people, no spacecraft, no rover, no orange sky, no exaggerated flare, no illustration or video-game look."
+    },
+    {
+      "id": "HERO_STARSHIP",
+      "path": "public/images/hero/hero-starship.webp",
+      "width": 793,
+      "height": 1983,
+      "hasAlpha": true,
+      "bytes": 857294,
+      "sha256": "40dffb3288e48f1495b424cfe6c3f3cf8d701eb3118375d8c035069886107656",
+      "prompt": "Use case: product-mockup\nAsset type: isolated transparent spacecraft cutout for a layered website hero; tall portrait canvas ratio 2:5.\nPrimary request: photorealistic SpaceX Starship UPPER STAGE ONLY in final vertical landing descent above Mars. Single complete vehicle centered, upright, nose at top, engines at bottom, entire nose and exhaust inside canvas with safe margins. Vehicle about 88% of image height. Realistic upper-stage proportions roughly 50m tall, 9m wide, NOT a complete rocket stack.\nHardware: brushed stainless steel cylinder, smooth rounded conical nose, exactly two small forward flaps and two larger aft flaps; black hexagonal heat shield visible along one side, realistic welded rings and subtle reentry discoloration. Short sturdy concept landing legs at base, tiny pale translucent blue-white central engine exhaust only.\nLighting: low sun from LEFT, soft pale warm-grey highlight on left steel edge, right in deep shadow, faint cool reflections; match desaturated grey-ochre Mars sunrise. 50mm lens, gently low viewpoint, monumental engineering photography, crisp real metal.\nConstraints: genuinely transparent background with clean alpha edges including around flaps and faint exhaust. No ground, sky, stars, dust cloud, booster, text, letters, logos, flags, watermark, orange flame, extra fins, airplane wings, toy proportions or video-game look."
+    },
+    {
+      "id": "HERO_FOREGROUND",
+      "path": "public/images/hero/hero-foreground-rocks.webp",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": true,
+      "bytes": 630278,
+      "sha256": "bff4dc9ba314b4edef6d435bf2cb1d1517e1efce6a65698bab36e1ed8022d777",
+      "prompt": "Use case: photorealistic-natural\nAsset type: transparent foreground layer for a cinematic Mars website hero. Ultra-wide horizontal 16:5 composition.\nPrimary request: a low strip of dark basaltic Martian rocks and dusty regolith very close to camera, from ground level, soft and slightly out of focus from shallow depth of field. Bottom of image completely filled by dark continuous ground edge to edge; irregular low rocky silhouette across lower half, with a few boulders rising at outer edges, keeping the center low. Entire upper half and everything above rock silhouette genuinely transparent, not black. No holes in the bottom ground.\nLighting: low sunlight from LEFT, thin subtle warm-grey rim light; deep nearly black shadows, low detail, restrained desaturated warm charcoal to match a muted grey-ochre Martian plain. 35mm cinema photo, natural basalt and fine dust, realistic scale.\nConstraints: transparent background above rocks, natural clean alpha edges and no edge halo, no sky, no horizon scenery, no spacecraft, no people, no text, logo, watermark or frames, no bright highlights, no orange saturation. Single full width asset."
+    },
+    {
+      "id": "JOURNEY_DEEP_SPACE",
+      "path": "public/images/journey/journey-deep-space.webp",
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "bytes": 78812,
+      "sha256": "c8b576e6771a6b0fd5437e6296d10ebc618bd68b574733c866b968db743fab89",
+      "prompt": "Use case: photorealistic-natural\nAsset type: very dark 16:9 starfield background for a SpaceX-inspired interplanetary journey website diagram.\nPrimary request: deep space photographed by an astronomical camera; thousands of tiny pin-sharp realistically varied dim stars, on near-black #050608 space. Extremely faint diffuse diagonal dust band of Milky Way in cool grey-blue. Keep most pixels very close to black, low exposure, sparse brightest points, subtle deep texture. High-resolution clean continuous photograph, quiet immense scale.\nConstraints: backdrop must allow white text, planet cutouts and thin SVG orbit lines clearly on top. No main subject, no planets, no moons, no spacecraft, no colored nebula, no purple or neon, no large starbursts, no lens flare, no text, logos, watermark, frames, collage or illustration."
+    },
+    {
+      "id": "JOURNEY_EARTH",
+      "path": "public/images/journey/journey-earth.webp",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "bytes": 1559604,
+      "sha256": "4123a00290e971a6ca7b9203020931787ed3a095c416cf95094209594bd835ad",
+      "prompt": "Use case: photorealistic-natural\nAsset type: square transparent Earth cutout for an animated orbital transfer diagram in a SpaceX-inspired website.\nPrimary request: Earth as a realistic complete spherical disc seen from deep space, centered occupying 92 percent of square canvas, entire circular limb safely inside frame. Sunlight from RIGHT, about 55–60% of globe in deep shadow toward left. Recognizable physically plausible continents, ocean blue with slightly desaturated grading, natural white cloud swirls, very subtle city lights in night hemisphere. Extremely thin pale blue atmospheric rim with no oversized glow.\nStyle: high-resolution natural orbital photograph, crisp planetary detail, restrained cinematic contrast, no illustration.\nConstraints: genuinely transparent background outside complete globe with clean alpha edges; dark night hemisphere is opaque, only space around planet transparent. No stars, moon, spacecraft, text, labels, watermark, logos, frames or strong saturation."
+    },
+    {
+      "id": "JOURNEY_MARS",
+      "path": "public/images/journey/journey-mars.webp",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": true,
+      "bytes": 1333246,
+      "sha256": "c292540c67b9eb9e7201dfece63e3aac6a0b2a1930ea04465266f92ebb3e4f9c",
+      "prompt": "Use case: photorealistic-natural\nAsset type: square transparent Mars planetary cutout paired with a realistic Earth image in a dark orbital transfer website diagram.\nPrimary request: complete spherical disc of Mars, centered with all edges safely within square frame, planet diameter 92 percent of image width. Low sunlight from upper LEFT, right half in deep shadow, roughly 60 percent lit. Realistic rusty ochre and grey geological markings with recognisable Valles Marineris and cratered highlands, subtle polar ice cap. Fine realistic remote orbital detail, muted low-saturation natural Mars palette, restrained cinematic contrast, extremely thin dusty atmospheric edge.\nConstraints: genuinely transparent outside full disc, opaque night hemisphere, clean circular alpha edge, no stars, moons, rings, spacecraft, exaggerated glow, colorful space, saturated orange, typography, labels, logos, watermark or frame. High quality natural planetary photograph."
+    },
+    {
+      "id": "JOURNEY_STARSHIP_TRANSIT",
+      "path": "public/images/journey/journey-starship-transit.webp",
+      "width": 2172,
+      "height": 724,
+      "hasAlpha": true,
+      "bytes": 943912,
+      "sha256": "b807cb92db379bed1192aeb06e38a9f0e475fc654fba749b2ad750ce3b06e923",
+      "prompt": "Use case: product-mockup\nAsset type: transparent horizontal 3:1 spacecraft cutout for an animated flight path; spacecraft nose must point RIGHT.\nPrimary request: a single photorealistic SpaceX Starship UPPER STAGE ONLY coasting with engines off, viewed exactly from the side. Body perfectly horizontal across canvas, nose RIGHT, engine bells LEFT. Entire vehicle visible with 6% safe margin at both ends. Slim realistic upper-stage proportions about 50m long by 9m body diameter, rounded conical stainless steel nose, two small forward flaps and two larger aft flaps folded toward body, partial black hexagonal heat shield on lower side. Welded brushed stainless steel, real physical engineering details.\nLighting: hard sunlight from upper left, crisp long steel highlight, deep shadow underneath, restrained cool reflections, premium cinematic aerospace product photography.\nConstraints: genuinely transparent background with clean alpha edges, not a black rectangle. No booster, no ground, no starfield, planet, exhaust, landing legs, lettering, logos, flags, watermark, HUD or frames; no tilted or diagonal spacecraft; no airplane wings; no duplicated rocket."
+    },
+    {
+      "id": "STARSHIP_PROFILE",
+      "path": "public/images/starship/starship-profile.webp",
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": false,
+      "bytes": 42898,
+      "sha256": "cc4b19659bb5673ae8fcdbcb4e5f8bc1db048a0da32a7b240b1a62c7026116b4",
+      "prompt": "Use case: product-mockup\nAsset type: 2:3 portrait engineering photograph for a SpaceX-inspired website, black background with white dimensional overlays added separately.\nPrimary request: full realistic SpaceX Starship and Super Heavy rocket stack, upper stage connected to booster, standing vertically on a minimal dark launch mount. Entire slender approximately 121m tall by 9m wide stack within image, centered, nose at 6% from top, base at 94% from top. Authentic cylindrical brushed stainless steel, rounded conical Starship nose, small upper flaps, larger aft flaps on upper stage, black hexagonal heat shield on one side, long cylindrical booster below with grid fins, visible welded steel rings. No launch tower.\nStyle: monumental aerospace engineering product portrait against almost perfectly black #050608 background, distant 85mm camera at mid-height for undistorted proportions, slight three-quarter angle. Single strong soft-edged sidelight from LEFT across steel, faint cool rim on right, beautiful detailed metal and controlled highlights, realistic cinematic photography, fine film grain. Corners dark and clear for UI brackets.\nConstraints: no text, logos, lettering, flags, watermark, diagrams, labels, measurements, smoke, exhaust, fire, stars, other rockets or illustration."
+    },
+    {
+      "id": "STARSHIP_ENGINES",
+      "path": "public/images/starship/starship-engines.webp",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "bytes": 286236,
+      "sha256": "d9585dbca14d6c3c1778536d6fe19dd8ea18f1459523e468248e163b2510f89c",
+      "prompt": "Use case: product-mockup\nAsset type: square close-up engineering photograph, inset on a dark SpaceX-inspired website.\nPrimary request: looking straight up into the underside of a SpaceX Starship upper-stage six-engine cluster, engines OFF. Exactly three smaller central Raptor sea-level engine bells arranged as a tight triangle, surrounded by exactly three larger vacuum engine bells at equal spacing. Mechanical hardware attached naturally to circular steel thrust structure, realistic metal piping and turbopump connections, heat shielding, subtle soot and heat discoloration. All visible engines share consistent physical perspective and scale. Focus on central engineering detail, tight square crop, no booster engine forest.\nLighting: hard raking sidelight from LEFT, dark recesses, faint cool reflection inside nozzle bells, deep charcoal shadows. Detailed aerospace documentary macro photo, real brushed metal, controlled highlights, cinematic precision, restrained neutral black-white-steel palette.\nConstraints: no fire, exhaust, smoke, people, text, logos, lettering, flags, HUD, border, watermark, plastic CGI surface or impossible floating parts."
+    },
+    {
+      "id": "LANDING_TOUCHDOWN",
+      "path": "public/images/landing/landing-touchdown.webp",
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "bytes": 87600,
+      "sha256": "7cd99406e7acee96454ae6af1ad4e55b420f329ca71244927ff701359c32780a",
+      "prompt": "Use case: photorealistic-natural\nAsset type: full-bleed 16:9 cinematic landing photograph on a dark SpaceX Mars mission concept website.\nPrimary request: a single stainless steel SpaceX Starship UPPER STAGE, approximately 50m tall with realistic rounded conical nose, two small forward flaps and two larger aft flaps, visible black heat tiles on one side, standing perfectly vertical on short sturdy concept landing legs on Mars just after touchdown. Full vehicle near horizontal center, occupies central 45% of image height, all nose and base safely in frame. Immense muted Martian plain, eroded mesas far away, thin ground-hugging dust settling around base, engines OFF, no flame. Rocky foreground in deep shadow. Ship is large but environment is monumental.\nLighting: low sun from LEFT hidden behind grey-ochre haze, long plausible shadow, soft rim on left steel edge, subdued steel reflections. Match a quiet cinematic documentary series of Mars, neutral desaturated rust and warm grey, dark near-black corners, 35mm full-frame photography, fine real regolith and film grain.\nComposition: calm dark upper band and lower-left third for website telemetry and headline; craft centered so initial central crop still shows it.\nConstraints: no text, letters, logos, flags, watermark, HUD, border, people, additional vehicles, booster, launch tower, fire, explosions, dramatic orange sky, neon or game-render look."
+    },
+    {
+      "id": "FIRSTSTEPS_ASTRONAUT",
+      "path": "public/images/astronauts/firststeps-astronaut.webp",
+      "width": 1122,
+      "height": 1402,
+      "hasAlpha": false,
+      "bytes": 320744,
+      "sha256": "05ff01d6ae3cf509dad73b41f5e53604fe1946fb636de276961b2a9ce1c07be2",
+      "prompt": "Use case: photorealistic-natural\nAsset type: portrait 4:5 photograph for 'First Steps on Mars' section of a SpaceX-inspired cinematic website.\nPrimary request: one astronaut seen from BEHIND, walking away from camera across a vast rocky Martian plain, full human body including both boots clearly visible. Astronaut centered at about 50 percent horizontal and 58 percent vertical; small enough to preserve monumental landscape. Future plausible EVA suit inspired by minimalist SpaceX white-and-black design: clean white articulated pressure suit, black flexible joints, compact rectangular life support backpack, white rounded helmet with dark closed visor. No insignia. Exactly two arms and two legs in natural walking posture; gloved hands relaxed. Distant landed stainless steel Starship tiny near horizon, desaturated eroded mesas beyond.\nLighting: low sun from LEFT, long shadow, muted grey-ochre sky, restrained natural rust-grey regolith, deep neutral shadows. Eye-level 50mm full-frame documentary photography, physically realistic suit fabric, dust on boots, fine film grain.\nComposition: top 15 percent calm sky, bottom 20 percent simple dark ground for UI overlays. Single seamless photo.\nConstraints: no text, logos, numbers, flags, watermark, extra limbs, distorted hands, exposed skin, missing boots, cartoon, orange saturated sky, neon or futuristic glowing armor."
+    },
+    {
+      "id": "FIRSTSTEPS_FOOTPRINT",
+      "path": "public/images/astronauts/firststeps-footprint.webp",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "bytes": 520862,
+      "sha256": "ac5c71bf0df31f64e2918f86d9106f78ceacf2ab6c50d3a4fed4458f454f5147",
+      "prompt": "Use case: photorealistic-natural\nAsset type: square detail photograph for a cinematic SpaceX-inspired Mars mission website.\nPrimary request: one single fresh astronaut boot print pressed into fine Martian regolith, viewed from above at a gentle oblique angle, centered diagonally within frame. A clearly recessed sole impression with plausible repeated parallel chevron tread, compressed fine dust and small crumbled edges. Entire footprint visible with surrounding untouched terrain, no actual boot. Small basalt pebbles and individual dust grains around it.\nLighting: very low raking sunlight from LEFT reveals tread relief, shadows inside the recess. Muted desaturated rust-grey soil, near-neutral warm grey, deep subtle shadows, no orange saturation. Real close-up documentary macro photography, 85mm lens detail, restrained contrast, fine film grain, historic contemplative mood.\nConstraints: no text or letters in tread, no logo, flags, watermark, borders, overlapping footprints, actual feet, humans, plants, water, illustration or plastic render."
+    },
+    {
+      "id": "DATA_SURFACE_MAP",
+      "path": "public/images/data/data-surface-map.webp",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "bytes": 351802,
+      "sha256": "56819f49a479f9efdf33b85897786b93b08c686fdb9deca3f7713aa56dca5c04",
+      "prompt": "Use case: photorealistic-natural\nAsset type: square orbital terrain photograph for an interactive Mars landing-site panel, overlays will be drawn separately by the website.\nPrimary request: high-resolution scientific satellite image of Mars viewed perfectly vertically down, covering about 20 kilometers of an immense plain. Realistic varied small impact craters with ejecta, fine subtle dune fields, dry eroded braided channels, weathered ridges and basalt. A very subtle slightly lighter flat patch of disturbed terrain at exactly 52% from LEFT, 46% from TOP to align with site crosshair; no visible spacecraft. Mostly flat plausible landing region near center, relief richer toward edges.\nLighting: sunlight from LEFT, physically plausible crater shadows, moderate contrast. Muted rust-grey and neutral warm charcoal tones matching cinematic desaturated Mars series. Crisp remote-sensing texture and real geological complexity, no perspective horizon.\nConstraints: photograph only, absolutely no text, grid, contour line drawings, labels, map pins, crosshairs, scale bars, UI, borders, logos, watermarks, spacecraft, Earth vegetation, blue water, or saturated colors."
+    },
+    {
+      "id": "LIFE_HABITAT",
+      "path": "public/images/habitat/life-habitat.webp",
+      "width": 1586,
+      "height": 992,
+      "hasAlpha": false,
+      "bytes": 187318,
+      "sha256": "620b6bcb0bfa9eecab01baeb810defb5f4ccdbbb172528d8918358a6be7f3026",
+      "prompt": "Use case: photorealistic-natural\nAsset type: landscape 16:10 editorial photograph of a future Mars base for an unofficial SpaceX concept website.\nPrimary request: early human outpost on Mars at dusk, plausible modest infrastructure: low white pressurized cylindrical habitat modules and shallow curved roofs partly covered by grey-rust regolith radiation shielding, sealed connecting tunnels, small warm softly lit windows. Main habitat near 45% horizontal and 55% vertical, connected access platforms, neatly laid realistic cables and rows of dark solar panels on dusty ground. One distant landed stainless steel Starship upper stage standing vertical as a tiny scale reference. Horizon about 55% down image, distant eroded mesas consistent with an empty grey-ochre Martian plain.\nLighting: low setting sun from LEFT, faint cool blue-grey glow near sunset through thin dust, neutral grey sky elsewhere, muted soft warm interior windows are only warm highlight. Quiet restrained desaturated rust-grey ground, deep neutral shadows, real steel and industrial composites. 35mm eye-level full-frame cinematic documentary photograph, fine detail and film grain, believable human-scale engineering.\nConstraints: no people in foreground, no text, lettering, logos, flags, watermark, HUD, borders, glass megadomes, neon lighting, giant city, fantasy architecture, vegetation, oversaturated orange or game-like CGI."
+    },
+    {
+      "id": "LIFE_CREW_WORK",
+      "path": "public/images/habitat/life-crew-work.webp",
+      "width": 1122,
+      "height": 1402,
+      "hasAlpha": false,
+      "bytes": 301792,
+      "sha256": "fbcb036926a8a016ec24ad6240edbc45aafc304c3799924fbb15047be1c9e4ee",
+      "prompt": "Use case: photorealistic-natural\nAsset type: portrait 4:5 documentary photograph, part of a consistent future Mars outpost gallery on a SpaceX-inspired site.\nPrimary request: exactly two astronauts wearing minimalist modern white EVA suits with black articulated joints and compact life-support packs, working together to assemble a short aluminium truss antenna structure on the dusty Martian ground beside the base of their landed steel Starship. Medium-wide candid view, both astronauts have distinct natural working poses, one holds the mast stable with two gloved hands, the other tightens one visible fastener with a small mechanical ratchet. Hands mostly wrapped naturally around equipment, no visible fingers splayed toward camera. Helmet visors closed and dark reflective, no visible faces. Real cable spools and a few plain equipment cases on ground. Part of steel landing leg at outer frame edge, distant grey-ochre rocky plain and low mesas.\nLighting: low afternoon sunlight from LEFT, natural shadow toward right, muted dust haze, desaturated rust-grey palette, whites and black and brushed metal, restrained cinematic documentary 50mm lens, detailed fabric and real materials, fine film grain.\nConstraints: exactly two people with two arms and two legs each, anatomically coherent, no posing at camera, no text, logos, flags, patches, readable labels, weapons, glowing gadgets, watermark, HUD, border, cartoon, orange saturation or excessive sci-fi armor."
+    },
+    {
+      "id": "LIFE_SCIENCE",
+      "path": "public/images/habitat/life-science-station.webp",
+      "width": 1254,
+      "height": 1254,
+      "hasAlpha": false,
+      "bytes": 307114,
+      "sha256": "81afa05c829cf4acb7398e1927660c1fb4cabf61d67f4b36b298d50c3dccd9f3",
+      "prompt": "Use case: photorealistic-natural\nAsset type: square documentary photograph for a future Mars outpost gallery on a dark SpaceX-inspired site.\nPrimary request: compact realistic deep-drilling science station on Mars searching for subsurface ice. A slender sturdy aluminium lattice drill tower anchored to a squat mechanical platform and drill stem meets ground naturally, one separate thin weather sensor mast, plain white instrument enclosures, neatly routed black cables and a few small dark solar panels on regolith. Station centered with safe space around it, pale grey-ochre sky occupies upper third, vast dusty plain and low eroded mesas in background consistent with the same small Mars base. No people.\nLighting: late afternoon low sun from LEFT, long physically plausible shadows, fine dust haze, understated neutral steel and white equipment, desaturated rust-grey ground, near-black shadow, detailed realistic metal and natural geology. 50mm full-frame documentary photograph, high engineering realism, subtle film grain.\nConstraints: no text, labels, logos, flags, watermark, borders, HUD, people, spacecraft foreground, neon lights, glowing energy, giant fantasy industry, cartoon, plastic game render, oversaturated orange."
+    },
+    {
+      "id": "LIFE_ROVER",
+      "path": "public/images/habitat/life-rover.webp",
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "bytes": 308906,
+      "sha256": "74ea9986dc559afa4865db2fdf42bcb1c3bc104123a925dac29aad0d732a4f2e",
+      "prompt": "Use case: photorealistic-natural\nAsset type: landscape 3:2 expedition documentary photograph for a consistent SpaceX-inspired future Mars outpost gallery.\nPrimary request: compact plausible PRESSURIZED crew exploration rover crossing a rocky Martian ridge, vehicle in right third of frame seen in three-quarter view, entirely visible with safe margins. Simple white and graphite crew cabin with small dark windows and exactly SIX large realistic open metal-mesh wheels on articulated suspension: three on each side, far-side wheels naturally occluded by cabin and near wheels. Practical engineering, protected underside, plain storage bays, low antenna, no decorative armor, no weapons. Subtle trail of disturbed dust follows wheels, believable tire contact on rock. Vast open valley and layered low eroded mesas recede to left behind rover, pale grey-ochre sky.\nLighting: low sun from LEFT, long shadows, muted desaturated rust-grey terrain, white and black and steel rover, deep charcoal shadows, full-frame 50mm cinematic documentary photography, natural high-resolution detail and fine film grain.\nConstraints: no external people, text, logos, numbers, flags, watermark, HUD, borders, fantasy tank, impossible duplicated wheels, giant vehicle, orange saturated sky, neon or video-game illustration."
+    },
+    {
+      "id": "LIFE_PANORAMA",
+      "path": "public/images/habitat/life-panorama.webp",
+      "width": 1914,
+      "height": 822,
+      "hasAlpha": false,
+      "bytes": 193464,
+      "sha256": "cf51073739e6aa3765a22e99b29ad2af119bf37efb61cf0d6ec5fd88235ad222",
+      "prompt": "Use case: photorealistic-natural\nAsset type: ultra-wide 21:9 panoramic documentary landscape for a horizontal gallery on a cinematic SpaceX-inspired Mars mission website.\nPrimary request: vast Martian valley viewed from a low rocky overlook, horizon at mid-frame, layered eroded mesas and broad shallow dry channels receding into soft dusty distance. Immense quiet landscape extends across entire wide image. Far LEFT on plain a tiny modest cluster of white habitat cylinders, solar panels and one tiny vertical landed stainless steel Starship upper stage gives scale; base barely visible, not foreground. Central and right landscape spacious and empty. Natural basalt boulders and rippled fine regolith in near foreground.\nLighting: soft low late-day sunlight from LEFT, long shadows, gentle haze, grey-ochre sky and desaturated rust-grey ground graded toward neutral warm grey, deep charcoal shadows matching #050608 interface. Realistic full-frame stitched panorama photograph, fine film grain, nuanced geology, contemplative monumental scale.\nConstraints: one continuous seamless panorama, no collage joins, text, logos, flags, watermark, HUD, frames, foreground people, large foreground spacecraft, alien mountains, plants, blue water, orange saturated sky or illustration."
+    },
+    {
+      "id": "FINAL_HORIZON",
+      "path": "public/images/final/final-horizon.webp",
+      "width": 1672,
+      "height": 941,
+      "hasAlpha": false,
+      "bytes": 19784,
+      "sha256": "8a5104d3bea4c4e9e6c331271372c0efdc4ef0cf2a36ee41d812807733b092e4",
+      "prompt": "Use case: photorealistic-natural\nAsset type: wide 16:9 cinematic final background for a dark SpaceX Mars mission concept website with large centered white headline and button overlay.\nPrimary request: orbital photograph looking above the curved limb of Mars, sweeping dark planet surface across LOWER HALF of frame. Arc crest near 48% height, planet mostly in deep near-black shadow, only a slim subdued rusty-grey sliver along horizon and an extremely thin pale dusty atmospheric line softly backlit by sunrise hidden behind planet. Upper half is deep black space with sparse tiny faint stars. One very SMALL distant stainless steel Starship upper stage departing upward toward deep space near 50% horizontal, 28% vertical, realistic slim rounded pointed shape with tiny flaps, soft very short pale blue-white exhaust beneath it. Preserve enormous scale, spacecraft is tiny relative to planet.\nStyle: high-resolution realistic orbital cinema photograph, quiet restrained desaturated near-black #050608 and neutral cool grey, faint muted rust on lit planetary edge, natural grain, physically plausible lighting, thoughtful hopeful closing mood.\nComposition: lower half and central area remain very dark and simple, usable as headline and CTA backdrop, full-bleed seamless 16:9.\nConstraints: no text, lettering, logos, flags, watermark, HUD, borders, lens flare streak, explosion, bright orange fire, colored nebula, foreground moon, Earth blue oceans, exaggerated luminous atmosphere or game-like illustration."
+    }
+  ]
+}
